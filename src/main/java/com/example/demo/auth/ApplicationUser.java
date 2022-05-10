@@ -1,22 +1,25 @@
 package com.example.demo.auth;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class ApplicationUser implements UserDetails {
 
-    private final List<GrantedAuthority> grantedAuthorityList;
-    private final String password;
+
     private final String username;
+    private final String password;
+    private final Set<SimpleGrantedAuthority> grantedAuthorityList;
     private final boolean isAccountNonExpired;
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
 
-    public ApplicationUser(List<GrantedAuthority> grantedAuthorityList, String password, String username, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
+    public ApplicationUser(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorityList, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
         this.grantedAuthorityList = grantedAuthorityList;
         this.password = password;
         this.username = username;
